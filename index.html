@@ -52,8 +52,22 @@
     tap-to-pick
   >
     <a-assets>
-      <audio id="a-sol" src="assets/sol.mp3" preload="auto"></audio>
-      <audio id="a-mercurio" src="assets/mercurio.mp3" preload="auto"></audio>
+      <!-- TEXTURAS (ABD) -->
+      <img id="tex-sun" src="assets/sun_abd.jpg" />
+      <img id="tex-mercury" src="assets/mercury_abd.jpg" />
+      <img id="tex-venus" src="assets/venus_abd.jpg" />
+      <img id="tex-earth" src="assets/earth_abd.jpg" />
+      <img id="tex-mars" src="assets/mars_abd.jpg" />
+      <img id="tex-jupiter" src="assets/jupiter_abd.jpg" />
+      <img id="tex-saturn" src="assets/saturn_abd.jpg" />
+      <img id="tex-uranus" src="assets/uranus_abd.jpg" />
+      <img id="tex-neptune" src="assets/neptune_abd.jpg" />
+
+      <!-- TEXTURA DO ANEL -->
+      <img id="tex-saturn-ring" src="assets/saturn_ring_abd.png" />
+
+      <!-- ÁUDIOS (conforme os teus nomes no print) -->
+      <audio id="a-mercurio" src="assets/mercuro.mp3" preload="auto"></audio>
       <audio id="a-venus" src="assets/venus.mp3" preload="auto"></audio>
       <audio id="a-terra" src="assets/terra.mp3" preload="auto"></audio>
       <audio id="a-marte" src="assets/marte.mp3" preload="auto"></audio>
@@ -61,6 +75,8 @@
       <audio id="a-saturno" src="assets/saturno.mp3" preload="auto"></audio>
       <audio id="a-urano" src="assets/urano.mp3" preload="auto"></audio>
       <audio id="a-neptuno" src="assets/neptuno.mp3" preload="auto"></audio>
+      <!-- Se tu NÃO tiveres sol.mp3, apaga as 2 linhas abaixo -->
+      <audio id="a-sol" src="assets/sol.mp3" preload="auto"></audio>
     </a-assets>
 
     <a-marker preset="hiro" id="solarSystemMarker" emitevents="true">
@@ -70,17 +86,18 @@
         rotation="-25 0 0"
         scale="0.22 0.22 0.22">
 
-        <!-- SOL -->
+        <!-- SOL (com textura) -->
         <a-sphere id="sol" class="clickable"
           position="0 0 0"
           radius="0.32"
-          color="#FFD700"
+          segments-width="64"
+          segments-height="64"
+          material="src: #tex-sun; roughness: 1; metalness: 0; emissive: #FFD34D; emissiveIntensity: 0.35"
           sound="src:#a-sol; autoplay:false; loop:false; volume:0.6"
-          material="emissive:#FFD700; emissiveIntensity:0.7"
           animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
         </a-sphere>
 
-        <!-- ÓRBITAS (visual) -->
+        <!-- ÓRBITAS -->
         <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="0.55" radius-outer="0.57" color="#FFFFFF" material="opacity:0.15; transparent:true"></a-ring>
         <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="0.78" radius-outer="0.80" color="#FFFFFF" material="opacity:0.12; transparent:true"></a-ring>
         <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="1.02" radius-outer="1.04" color="#FFFFFF" material="opacity:0.10; transparent:true"></a-ring>
@@ -90,46 +107,87 @@
         <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="2.18" radius-outer="2.20" color="#FFFFFF" material="opacity:0.08; transparent:true"></a-ring>
         <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="2.52" radius-outer="2.54" color="#FFFFFF" material="opacity:0.07; transparent:true"></a-ring>
 
-        <!-- PLANETAS -->
+        <!-- PLANETAS com textura -->
         <a-sphere id="mercurio" class="clickable planet"
-          position="0.56 0 0" radius="0.10" color="#8C7853"
-          sound="src:#a-mercurio; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="0.56 0 0"
+          radius="0.10"
+          segments-width="48"
+          segments-height="48"
+          material="src: #tex-mercury; roughness: 1; metalness: 0"
+          sound="src:#a-mercurio; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="venus" class="clickable planet"
-          position="0 0 0.79" radius="0.12" color="#FFC649"
-          sound="src:#a-venus; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="0 0 0.79"
+          radius="0.12"
+          segments-width="48"
+          segments-height="48"
+          material="src: #tex-venus; roughness: 1; metalness: 0"
+          sound="src:#a-venus; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="terra" class="clickable planet"
-          position="-1.02 0 0" radius="0.13" color="#4A90E2"
-          sound="src:#a-terra; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="-1.02 0 0"
+          radius="0.13"
+          segments-width="48"
+          segments-height="48"
+          material="src: #tex-earth; roughness: 1; metalness: 0"
+          sound="src:#a-terra; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="marte" class="clickable planet"
-          position="0 0 -1.28" radius="0.10" color="#CD5C5C"
-          sound="src:#a-marte; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="0 0 -1.28"
+          radius="0.10"
+          segments-width="48"
+          segments-height="48"
+          material="src: #tex-mars; roughness: 1; metalness: 0"
+          sound="src:#a-marte; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="jupiter" class="clickable planet"
-          position="1.55 0 0" radius="0.22" color="#D8CA9D"
-          sound="src:#a-jupiter; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="1.55 0 0"
+          radius="0.22"
+          segments-width="64"
+          segments-height="64"
+          material="src: #tex-jupiter; roughness: 1; metalness: 0"
+          sound="src:#a-jupiter; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="saturno" class="clickable planet"
-          position="0 0 1.85" radius="0.20" color="#FAD5A5"
-          sound="src:#a-saturno; autoplay:false; loop:false; volume:0.6"></a-sphere>
-
-        <a-torus id="aneisSaturno"
           position="0 0 1.85"
-          radius="0.30"
-          radius-tubular="0.012"
-          rotation="75 0 0"
-          color="#C9B037"
-          material="opacity:0.9; transparent:true"></a-torus>
+          radius="0.20"
+          segments-width="64"
+          segments-height="64"
+          material="src: #tex-saturn; roughness: 1; metalness: 0"
+          sound="src:#a-saturno; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
+
+        <!-- Anel de Saturno com textura -->
+        <a-ring id="aneisSaturno"
+          position="0 0 1.85"
+          rotation="-90 0 0"
+          radius-inner="0.26"
+          radius-outer="0.36"
+          material="src: #tex-saturn-ring; transparent: true; opacity: 0.95; side: double">
+        </a-ring>
 
         <a-sphere id="urano" class="clickable planet"
-          position="-2.18 0 0" radius="0.18" color="#4FD0E7"
-          sound="src:#a-urano; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="-2.18 0 0"
+          radius="0.18"
+          segments-width="64"
+          segments-height="64"
+          material="src: #tex-uranus; roughness: 1; metalness: 0"
+          sound="src:#a-urano; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
         <a-sphere id="neptuno" class="clickable planet"
-          position="0 0 -2.52" radius="0.17" color="#4166F5"
-          sound="src:#a-neptuno; autoplay:false; loop:false; volume:0.6"></a-sphere>
+          position="0 0 -2.52"
+          radius="0.17"
+          segments-width="64"
+          segments-height="64"
+          material="src: #tex-neptune; roughness: 1; metalness: 0"
+          sound="src:#a-neptuno; autoplay:false; loop:false; volume:0.6">
+        </a-sphere>
 
       </a-entity>
     </a-marker>
