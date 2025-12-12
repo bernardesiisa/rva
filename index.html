@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Solar AR - Educativo</title>
+
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; }
+
+    #instructions {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.72); color: #fff;
+      padding: 12px 16px; border-radius: 10px;
+      z-index: 10; pointer-events: none; text-align: center;
+      max-width: 92%;
+    }
+
+    #planetInfo {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.95); color: #222;
+      padding: 14px 16px; border-radius: 12px;
+      z-index: 10; display: none; pointer-events: none;
+      max-width: 92%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    #planetInfo h3 { margin: 0 0 6px; }
+    #planetInfo p { margin: 0; line-height: 1.35; }
+  </style>
+</head>
+
+<body>
+  <div id="instructions">
+    <div style="font-size:18px;font-weight:700;">🌍 Sistema Solar AR</div>
+    <div style="margin-top:6px;">Aponta para o marcador <b>Hiro</b></div>
+    <div style="margin-top:4px;">Toca num planeta 👆</div>
+  </div>
+
+  <div id="planetInfo">
+    <h3 id="planetName"></h3>
+    <p id="planetFacts"></p>
+  </div>
+
+  <a-scene
+    embedded
+    vr-mode-ui="enabled:false"
+    arjs="sourceType:webcam; debugUIEnabled:false;"
+    tap-to-pick
+  >
+    <a-assets>
+      <audio id="a-sol" src="assets/sol.mp3" preload="auto"></audio>
+      <audio id="a-mercurio" src="assets/mercurio.mp3" preload="auto"></audio>
+      <audio id="a-venus" src="assets/venus.mp3" preload="auto"></audio>
+      <audio id="a-terra" src="assets/terra.mp3" preload="auto"></audio>
+      <audio id="a-marte" src="assets/marte.mp3" preload="auto"></audio>
+      <audio id="a-jupiter" src="assets/jupiter.mp3" preload="auto"></audio>
+      <audio id="a-saturno" src="assets/saturno.mp3" preload="auto"></audio>
+      <audio id="a-urano" src="assets/urano.mp3" preload="auto"></audio>
+      <audio id="a-neptuno" src="assets/neptuno.mp3" preload="auto"></audio>
+    </a-assets>
+
+    <a-marker preset="hiro" id="solarSystemMarker" emitevents="true">
+      <a-entity id="solarSystem"
+        visible="false"
+        position="0 0.25 0"
+        rotation="-25 0 0"
+        scale="0.22 0.22 0.22">
+
+        <!-- SOL -->
+        <a-sphere id="sol" class="clickable"
+          position="0 0 0"
+          radius="0.32"
+          color="#FFD700"
+          sound="src:#a-sol; autoplay:false; loop:false; volume:0.6"
+          material="emissive:#FFD700; emissiveIntensity:0.7"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
+        </a-sphere>
+
+        <!-- ÓRBITAS (visual) -->
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="0.55" radius-outer="0.57" color="#FFFFFF" material="opacity:0.15; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="0.78" radius-outer="0.80" color="#FFFFFF" material="opacity:0.12; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="1.02" radius-outer="1.04" color="#FFFFFF" material="opacity:0.10; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="1.28" radius-outer="1.30" color="#FFFFFF" material="opacity:0.10; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="1.55" radius-outer="1.57" color="#FFFFFF" material="opacity:0.09; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="1.85" radius-outer="1.87" color="#FFFFFF" material="opacity:0.08; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="2.18" radius-outer="2.20" color="#FFFFFF" material="opacity:0.08; transparent:true"></a-ring>
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="2.52" radius-outer="2.54" color="#FFFFFF" material="opacity:0.07; transparent:true"></a-ring>
+
+        <!-- PLANETAS -->
+        <a-sphere id="mercurio" class="clickable planet"
+          position="0.56 0 0" radius="0.10" color="#8C7853"
+          sound="src:#a-mercurio; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="venus" class="clickable planet"
+          position="0 0 0.79" radius="0.12" color="#FFC649"
+          sound="src:#a-venus; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="terra" class="clickable planet"
+          position="-1.02 0 0" radius="0.13" color="#4A90E2"
+          sound="src:#a-terra; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="marte" class="clickable planet"
+          position="0 0 -1.28" radius="0.10" color="#CD5C5C"
+          sound="src:#a-marte; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="jupiter" class="clickable planet"
+          position="1.55 0 0" radius="0.22" color="#D8CA9D"
+          sound="src:#a-jupiter; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="saturno" class="clickable planet"
+          position="0 0 1.85" radius="0.20" color="#FAD5A5"
+          sound="src:#a-saturno; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-torus id="aneisSaturno"
+          position="0 0 1.85"
+          radius="0.30"
+          radius-tubular="0.012"
+          rotation="75 0 0"
+          color="#C9B037"
+          material="opacity:0.9; transparent:true"></a-torus>
+
+        <a-sphere id="urano" class="clickable planet"
+          position="-2.18 0 0" radius="0.18" color="#4FD0E7"
+          sound="src:#a-urano; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+        <a-sphere id="neptuno" class="clickable planet"
+          position="0 0 -2.52" radius="0.17" color="#4166F5"
+          sound="src:#a-neptuno; autoplay:false; loop:false; volume:0.6"></a-sphere>
+
+      </a-entity>
+    </a-marker>
+
+    <a-entity id="camera" camera></a-entity>
+  </a-scene>
+
+  <script src="app.js"></script>
+</body>
+</html>

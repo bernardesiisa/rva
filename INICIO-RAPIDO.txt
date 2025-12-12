@@ -1,0 +1,27 @@
+INÍCIO RÁPIDO - Sistema Solar AR
+=================================
+
+1. INICIAR O SERVIDOR:
+   Abra um terminal nesta pasta e execute:
+   
+   Python 3:
+   python -m http.server 8000
+   
+   Python 2:
+   python -m SimpleHTTPServer 8000
+   
+   Node.js:
+   npx http-server -p 8000
+
+2. ABRIR NO NAVEGADOR:
+   http://localhost:8000
+
+3. IMPRIMIR O MARCADOR:
+   https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg
+
+4. USAR:
+   - Aponte a câmara para o marcador
+   - Toque num planeta para aprender!
+
+NOTA: Os áudios são opcionais. Se não existirem, o app usa síntese de voz.
+

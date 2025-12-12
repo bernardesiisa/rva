@@ -1,0 +1,24 @@
+ÁUDIOS DOS PLANETAS
+===================
+
+Coloque os seguintes ficheiros de áudio nesta pasta:
+
+- mercurio.mp3
+- venus.mp3
+- terra.mp3
+- marte.mp3
+- jupiter.mp3
+- saturno.mp3
+- urano.mp3
+- neptuno.mp3
+
+NOTA: Se algum ficheiro não existir, a aplicação usará automaticamente
+Speech Synthesis (síntese de voz) em português como fallback.
+
+Recomendações para os áudios:
+- Formato: MP3
+- Duração: 10-30 segundos
+- Linguagem: Português (pt-PT)
+- Tom: Infantil e educativo
+- Conteúdo: Nome do planeta + 1-2 factos simples
+
