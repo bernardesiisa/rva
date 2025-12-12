@@ -72,11 +72,22 @@
       <audio id="a-sol" src="assets/sol.mp3" preload="auto"></audio>
     </a-assets>
 
+
+
     <a-marker preset="hiro" id="solarSystemMarker" emitevents="true">
       <!-- ✅ AQUI ESTÁ A CORREÇÃO:
            - scale menor
            - órbitas menores
            - sistema mais centrado -->
+           <!-- Luz ambiente (clareia tudo) -->
+<a-entity light="type: ambient; color: #FFFFFF; intensity: 0.7"></a-entity>
+
+<!-- Luz pontual no Sol (ilumina os planetas) -->
+<a-entity
+  light="type: point; color: #FFFFFF; intensity: 1.2; distance: 5"
+  position="0 0.3 0">
+</a-entity>
+
       <a-entity id="solarSystem"
         visible="false"
         position="0 0.20 0"
@@ -88,7 +99,13 @@
           position="0 0 0"
           radius="0.22"
           segments-width="64" segments-height="64"
-          material="src:#tex-sun; roughness:1; metalness:0; emissive:#FFD34D; emissiveIntensity:0.35"
+material="
+  src:#tex-sun;
+  emissive:#FFD34D;
+  emissiveIntensity:0.6;
+  roughness:0.8;
+  metalness:0
+"
           sound="src:#a-sol; autoplay:false; loop:false; volume:0.6"
           animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
         </a-sphere>
@@ -107,37 +124,37 @@
         <a-sphere id="mercurio" class="clickable planet"
           position="0.31 0 0" radius="0.075"
           segments-width="48" segments-height="48"
-          material="src:#tex-mercury; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-mercurio; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="venus" class="clickable planet"
           position="0 0 0.44" radius="0.085"
           segments-width="48" segments-height="48"
-          material="src:#tex-venus; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-venus; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="terra" class="clickable planet"
           position="-0.56 0 0" radius="0.09"
           segments-width="48" segments-height="48"
-          material="src:#tex-earth; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-terra; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="marte" class="clickable planet"
           position="0 0 -0.70" radius="0.075"
           segments-width="48" segments-height="48"
-          material="src:#tex-mars; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-marte; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="jupiter" class="clickable planet"
           position="0.86 0 0" radius="0.15"
           segments-width="64" segments-height="64"
-          material="src:#tex-jupiter; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-jupiter; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="saturno" class="clickable planet"
           position="0 0 1.02" radius="0.14"
           segments-width="64" segments-height="64"
-          material="src:#tex-saturn; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-saturno; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <!-- Anel de Saturno (menor e alinhado) -->
@@ -151,13 +168,12 @@
         <a-sphere id="urano" class="clickable planet"
           position="-1.18 0 0" radius="0.12"
           segments-width="64" segments-height="64"
-          material="src:#tex-uranus; roughness:1; metalness:0"
+material="src:#tex-earth; roughness:0.9; metalness:0.05"
           sound="src:#a-urano; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
         <a-sphere id="neptuno" class="clickable planet"
           position="0 0 -1.34" radius="0.115"
           segments-width="64" segments-height="64"
-          material="src:#tex-neptune; roughness:1; metalness:0"
           sound="src:#a-neptuno; autoplay:false; loop:false; volume:0.6"></a-sphere>
 
       </a-entity>
